@@ -618,19 +618,16 @@ function AboutSection() {
 function ExperienceSection() {
   const highlights = [
     {
-      icon: '🧪',
       label: 'Swelling Ratio',
       value: '10,000%+',
       detail: 'Superabsorbent Classification',
     },
     {
-      icon: '🌱',
       label: 'Eco-Friendly',
       value: 'Biodegradable',
       detail: 'Sustainable Materials',
     },
     {
-      icon: '📊',
       label: 'FTIR Analysis',
       value: 'Ester Bond',
       detail: 'Confirmed Crosslinking',
@@ -712,7 +709,6 @@ function ExperienceSection() {
             <div className="experience-highlights">
               {highlights.map((item, i) => (
                 <div className="experience-highlight-card" key={i}>
-                  <div className="experience-highlight-icon">{item.icon}</div>
                   <div className="experience-highlight-value">{item.value}</div>
                   <div className="experience-highlight-label">{item.label}</div>
                   <div className="experience-highlight-detail">{item.detail}</div>
@@ -1062,16 +1058,16 @@ function ContactSection() {
       <section className="contact-section" id="contact">
         <div className="contact-inner">
           <Reveal>
-            <a href="mailto:oiuiuoi@gmail.com" className="contact-title">
+            <a href="mailto:rajayush12s5@gmail.com" className="contact-title">
               LET'S TALK
             </a>
           </Reveal>
           <Reveal delay={0.2}>
             <div className="contact-links">
-              <a href="mailto:oiuiuoi@gmail.com" className="contact-link-item">Email</a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="contact-link-item">LinkedIn</a>
-              {/* <a href="tel:+9187979878" className="contact-link-item">Phone</a> */}
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="contact-link-item">Github</a>
+              <a href="mailto:rajayush12s5@gmail.com" className="contact-link-item">Email</a>
+              <a href="https://www.linkedin.com/in/ayush-raj-12s5/" target="_blank" rel="noopener noreferrer" className="contact-link-item">LinkedIn</a>
+              {/* <a href="tel:+917764844424" className="contact-link-item">Phone</a> */}
+              <a href="https://github.com/Ayush-Srivastava63" target="_blank" rel="noopener noreferrer" className="contact-link-item">Github</a>
             </div>
           </Reveal>
         </div>
