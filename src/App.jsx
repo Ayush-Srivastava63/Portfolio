@@ -189,7 +189,7 @@ function MoleculeCanvas({ width = 400, height = 400 }) {
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < 40) {
             const alpha = (1 - dist / 40) * 0.15;
-            ctx.strokeStyle = `rgba(140, 160, 255, ${alpha})`;
+            ctx.strokeStyle = `rgba(34, 211, 238, ${alpha})`;
             ctx.beginPath();
             ctx.moveTo(projected[i].px, projected[i].py);
             ctx.lineTo(projected[j].px, projected[j].py);
@@ -201,8 +201,8 @@ function MoleculeCanvas({ width = 400, height = 400 }) {
       // Draw particles
       projected.forEach(p => {
         const alpha = 0.3 + (p.z + 120) / 240 * 0.5;
-        const blueChannel = 180 + Math.floor((p.z + 120) / 240 * 75);
-        ctx.fillStyle = `rgba(100, 140, ${blueChannel}, ${alpha})`;
+        const cyanChannel = 180 + Math.floor((p.z + 120) / 240 * 58);
+        ctx.fillStyle = `rgba(34, ${cyanChannel}, 238, ${alpha})`;
         ctx.beginPath();
         ctx.arc(p.px, p.py, p.size, 0, Math.PI * 2);
         ctx.fill();
@@ -210,8 +210,8 @@ function MoleculeCanvas({ width = 400, height = 400 }) {
 
       // Glow effect at center
       const gradient = ctx.createRadialGradient(cx, cy, 0, cx, cy, 130);
-      gradient.addColorStop(0, 'rgba(80, 120, 200, 0.08)');
-      gradient.addColorStop(0.5, 'rgba(60, 100, 180, 0.03)');
+      gradient.addColorStop(0, 'rgba(34, 211, 238, 0.08)');
+      gradient.addColorStop(0.5, 'rgba(6, 182, 212, 0.03)');
       gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
       ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, width, height);
@@ -261,7 +261,7 @@ function ProjectVisual({ type, width = 500, height = 300 }) {
       ctx.clearRect(0, 0, width, height);
 
       // Reactor vessel outline
-      ctx.strokeStyle = 'rgba(230, 57, 70, 0.3)';
+      ctx.strokeStyle = 'rgba(34, 211, 238, 0.3)';
       ctx.lineWidth = 2;
       ctx.beginPath();
       ctx.roundRect(width * 0.3, height * 0.15, width * 0.4, height * 0.7, 20);
@@ -291,7 +291,7 @@ function ProjectVisual({ type, width = 500, height = 300 }) {
         const px = width * 0.5 + Math.cos(angle) * r;
         const py = height * 0.5 + Math.sin(angle) * r * 0.6;
         const alpha = 0.3 + Math.sin(time + i * 0.5) * 0.2;
-        ctx.fillStyle = `rgba(230, 57, 70, ${alpha})`;
+        ctx.fillStyle = `rgba(34, 211, 238, ${alpha})`;
         ctx.beginPath();
         ctx.arc(px, py, 2, 0, Math.PI * 2);
         ctx.fill();
@@ -314,14 +314,14 @@ function ProjectVisual({ type, width = 500, height = 300 }) {
       // Flow arrows on inlet
       for (let i = 0; i < 3; i++) {
         const x = ((time * 40 + i * 50) % (width * 0.3));
-        ctx.fillStyle = 'rgba(100, 160, 255, 0.5)';
+        ctx.fillStyle = 'rgba(34, 211, 238, 0.5)';
         ctx.beginPath();
         ctx.arc(x, height * 0.3, 3, 0, Math.PI * 2);
         ctx.fill();
       }
 
       // Temperature indicator
-      ctx.fillStyle = 'rgba(230, 57, 70, 0.15)';
+      ctx.fillStyle = 'rgba(34, 211, 238, 0.15)';
       const tempHeight = height * 0.5 * (0.6 + Math.sin(time * 0.5) * 0.2);
       ctx.fillRect(width * 0.75, height * 0.85 - tempHeight, 8, tempHeight);
 
@@ -437,7 +437,7 @@ function Navbar({ onMenuOpen }) {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: 0.3 }}
       style={{
-        background: scrolled ? 'rgba(14, 16, 40, 0.85)' : 'transparent',
+        background: scrolled ? 'rgba(0, 0, 0, 0.85)' : 'transparent',
         backdropFilter: scrolled ? 'blur(20px)' : 'none',
         transition: 'background 0.4s ease, backdrop-filter 0.4s ease',
       }}
@@ -470,6 +470,7 @@ function Navbar({ onMenuOpen }) {
 function MobileMenu({ isOpen, onClose }) {
   const links = [
     { label: 'About', href: '#about' },
+    { label: 'Experience', href: '#experience' },
     { label: 'Projects', href: '#projects' },
     { label: 'Skills', href: '#skills' },
     { label: 'Education', href: '#education' },
@@ -583,7 +584,7 @@ function AboutSection() {
               Currently pursuing B.Tech
               in Chemical Engineering
               at NIT Hamirpur with
-              CGPA 8.08, building
+              CGPA 8.16, building
               hands-on expertise in
               process simulation.
             </div>
@@ -603,6 +604,139 @@ function AboutSection() {
               <a className="about-link" href="#education">Education</a>
               <a className="about-link" href="#skills">Skills</a>
               <a className="about-link" href="#projects">Projects</a>
+            </div>
+          </Reveal>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ═══════════════════════════════════════════════════════════
+   EXPERIENCE SECTION
+   ═══════════════════════════════════════════════════════════ */
+function ExperienceSection() {
+  const highlights = [
+    {
+      icon: '🧪',
+      label: 'Swelling Ratio',
+      value: '10,000%+',
+      detail: 'Superabsorbent Classification',
+    },
+    {
+      icon: '🌱',
+      label: 'Eco-Friendly',
+      value: 'Biodegradable',
+      detail: 'Sustainable Materials',
+    },
+    {
+      icon: '📊',
+      label: 'FTIR Analysis',
+      value: 'Ester Bond',
+      detail: 'Confirmed Crosslinking',
+    },
+  ];
+
+  return (
+    <section className="experience-section" id="experience">
+      <div className="experience-inner">
+        <Reveal>
+          <div className="experience-header">
+            <h2 className="section-header">
+              EXPERIENCE<span className="accent">.</span>
+            </h2>
+          </div>
+        </Reveal>
+
+        <div className="experience-card">
+          <Reveal delay={0.1}>
+            <div className="experience-card-top">
+              <div className="experience-logo-wrap">
+                <img
+                  src="/iiser-bhopal-logo.png"
+                  alt="IISER Bhopal Logo"
+                  className="experience-logo"
+                />
+              </div>
+              <div className="experience-meta">
+                <div className="experience-badge">Research Internship</div>
+                <h3 className="experience-org">
+                  Indian Institute of Science Education and Research, Bhopal
+                </h3>
+                <div className="experience-duration">
+                  <span className="experience-date">May 2026 — July 2026</span>
+                  <span className="experience-location">Bhopal, India</span>
+                </div>
+              </div>
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.2}>
+            <div className="experience-project-title">
+              <span className="experience-project-label">Project</span>
+              <h4>
+                Synthesis of Bi-Biopolymer Crosslinked Hydrogel and Incorporation
+                of Cellulose Nano-Crystals for Agriculture Applications
+              </h4>
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.3}>
+            <div className="experience-description">
+              <ul className="experience-bullets">
+                <li>
+                  Synthesized NaCMC and Xanthan gum based hydrogels using citric
+                  acid as a crosslinking agent for sustainable agriculture
+                  applications
+                </li>
+                <li>
+                  Achieved a swelling ratio exceeding <strong>10,000%</strong>,
+                  classifying the hydrogel as a <strong>superabsorbent</strong>{' '}
+                  material with exceptional water retention capacity
+                </li>
+                <li>
+                  Performed FTIR spectroscopic analysis confirming the presence of
+                  ester bonds, validating successful crosslinking between the
+                  biopolymer chains
+                </li>
+                <li>
+                  Developed a fully <strong>biodegradable</strong> and
+                  eco-friendly hydrogel system, contributing to sustainable
+                  water management solutions in agriculture
+                </li>
+              </ul>
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.4}>
+            <div className="experience-highlights">
+              {highlights.map((item, i) => (
+                <div className="experience-highlight-card" key={i}>
+                  <div className="experience-highlight-icon">{item.icon}</div>
+                  <div className="experience-highlight-value">{item.value}</div>
+                  <div className="experience-highlight-label">{item.label}</div>
+                  <div className="experience-highlight-detail">{item.detail}</div>
+                </div>
+              ))}
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.5}>
+            <div className="experience-tags">
+              {[
+                'Hydrogel Synthesis',
+                'NaCMC',
+                'Xanthan Gum',
+                'Citric Acid Crosslinking',
+                'FTIR Analysis',
+                'Superabsorbent Polymers',
+                'Cellulose Nano-Crystals',
+                'Biodegradable Materials',
+              ].map((tag) => (
+                <span key={tag} className="experience-tag">
+                  {tag}
+                </span>
+              ))}
             </div>
           </Reveal>
         </div>
@@ -888,7 +1022,7 @@ function EducationSection() {
               <div className="education-details">
                 <div className="edu-detail">
                   <span className="edu-detail-label">CGPA</span>
-                  <span className="edu-detail-value"><span className="highlight">8.08</span></span>
+                  <span className="edu-detail-value"><span className="highlight">8.16</span></span>
                 </div>
                 <div className="edu-detail">
                   <span className="edu-detail-label">Duration</span>
@@ -947,6 +1081,7 @@ function ContactSection() {
         <div className="footer-inner">
           <div className="footer-left">
             <a href="#about" className="footer-link">About</a>
+            <a href="#experience" className="footer-link">Experience</a>
             <a href="#projects" className="footer-link">Projects</a>
             <a href="#skills" className="footer-link">Skills</a>
             <a href="#education" className="footer-link">Education</a>
@@ -1009,6 +1144,7 @@ export default function App() {
 
           <HeroSection />
           <AboutSection />
+          <ExperienceSection />
           <ProjectsSection />
           <SkillsSection />
           <CertificationsSection />
